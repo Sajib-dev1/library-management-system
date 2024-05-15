@@ -11,7 +11,6 @@
     </style>
     <div class="col-lg-12">
         <div class="card-box">
-            
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="m-t-0 header-title">Student List Table</h4>
                 <a href="#custom-modal" class="btn btn-light waves-effect w-md mr-2 mb-2" data-animation="door" data-plugin="custommodal"

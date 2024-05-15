@@ -125,29 +125,18 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Assin student</span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{ route('morning.shift.student') }}">Morning shift student</a></li>
+                                    <li><a href="{{ route('morning.shift.student') }}">Attention Check</a></li>
                                 </ul>
                             </li>
 
-
-
-
-
-
-
-
-
-
-
-
-                            {{-- <li>
-                                <a href="widgets.html">
-                                    <i class="fi-command"></i> <span> Widgets </span>
+                            <li>
+                                <a href="{{ route('expenses.list') }}">
+                                    <i class="fi-command"></i> <span> Expenses </span>
                                 </a>
-                            </li> --}}
+                            </li>
 
-                            {{-- <li>
-                                <a href="javascript: void(0);"><i class="fi-disc"></i><span class="badge badge-info pull-right">10</span> <span> Forms </span></a>
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-disc"></i><span class="badge badge-info pull-right">10</span> <span> Report Part </span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="form-elements.html">Form Elements</a></li>
                                     <li><a href="form-advanced.html">Form Advanced</a></li>
@@ -162,7 +151,16 @@
                                 </ul>
                             </li>
 
-                            <li>
+
+
+
+
+
+
+
+
+
+                            {{-- <li>
                                 <a href="javascript: void(0);"><i class="fi-box"></i><span> Icons </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="icons-materialdesign.html">Material Design</a></li>
@@ -184,9 +182,9 @@
                                 </ul>
                             </li>
 
-                            <li class="menu-title">More</li>
+                            <li class="menu-title">More</li> --}}
 
-                            <li>
+                            {{-- <li>
                                 <a href="javascript: void(0);"><i class="fi-location-2"></i> <span> Maps </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="maps-google.html">Google Maps</a></li>
@@ -216,9 +214,9 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{ route('writter.list') }}">Writter List</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
 
-                            <li>
+                            {{-- <li>
                                 <a href="javascript:void(0);"><i class="fi-marquee-plus"></i><span class="badge badge-success pull-right">Hot</span> <span> Extra Pages </span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="extras-timeline.html">Timeline</a></li>

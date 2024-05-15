@@ -85,13 +85,34 @@ class SeatLocationController extends Controller
 
     function getassinstatus(Request $request){
 
-        AttendaseStudent::insert([
-            'assin_id'=>$request->assin_id,
-            'student_id'=>$request->student_id,
-            'status'=>1,
-            'created_at'=>Carbon::now(),
+        AsignSeat::find($request->assin_id)->update([
+            'status'=>$request->status,
         ]);
+
+        if($request->status == 1){
+            AttendaseStudent::insert([
+                'assin_id'=>$request->assin_id,
+                'student_id'=>$request->student_id,
+                'status'=>1,
+                'created_at'=>Carbon::now(),
+            ]);
+        }
         return back();
+    }
+
+    function attendase_student_status(){
+        $asign_seats = AsignSeat::all();
+        foreach ($asign_seats as $asign_seat ) {
+            if ($asign_seat->status == 1) {
+                AsignSeat::find($asign_seat->id)->update([
+                    'status'=>0,
+                    'updated_at'=>Carbon::now(),
+                ]);
+            }
+            else{
+                return view('admin.seat_location.attendase_submit');
+            }
+        }
     }
 
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AssinShiftController;
+use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LiberyMaster;
@@ -101,6 +102,14 @@ Route::middleware('admin')->group(function () {
     Route::get('/assign/all/student', [SeatLocationController::class, 'assign_all_student'])->name('assign.all.student');
     Route::get('/morning/shift/student', [AssinShiftController::class, 'morning_shift_student'])->name('morning.shift.student');
     Route::post('/getassinstatus', [SeatLocationController::class, 'getassinstatus']);
+    Route::get('/attendase/student/status', [SeatLocationController::class, 'attendase_student_status'])->name('attendase.student.status');
+});
+
+//__ Admin all Expenses__//
+Route::middleware('admin')->group(function () {
+    Route::get('/expenses/list', [ExpensesController::class, 'expenses_list'])->name('expenses.list');
+    Route::post('/expensess/store', [ExpensesController::class, 'expensess_store'])->name('expensess.store');
+    Route::get('/expensess/delete/{id}', [ExpensesController::class, 'expensess_delete'])->name('expensess.delete');
 });
 
 
