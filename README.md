@@ -1,5 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-<h1>My Rulling Project </h1>
+<h1>My Running Project </h1>
 <h3>Project Skin Short : https://drive.google.com/drive/u/0/folders/1FvsWUrSXQX-LRhYpnU8S_jC2AUeQTtEe</h3>
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
