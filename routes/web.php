@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LiberyMaster;
 use App\Http\Controllers\LiberyMasterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RepotrController;
 use App\Http\Controllers\SeatLocationController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\WritterController;
@@ -110,6 +111,11 @@ Route::middleware('admin')->group(function () {
     Route::get('/expenses/list', [ExpensesController::class, 'expenses_list'])->name('expenses.list');
     Route::post('/expensess/store', [ExpensesController::class, 'expensess_store'])->name('expensess.store');
     Route::get('/expensess/delete/{id}', [ExpensesController::class, 'expensess_delete'])->name('expensess.delete');
+});
+
+//__ Report all Expenses__//
+Route::middleware('admin')->group(function () {
+    Route::get('/report/amount', [RepotrController::class, 'report_amount'])->name('report.amount');
 });
 
 

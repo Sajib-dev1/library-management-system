@@ -138,7 +138,7 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-disc"></i><span class="badge badge-info pull-right">10</span> <span> Report Part </span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="form-elements.html">Form Elements</a></li>
+                                    <li><a href="{{ route('report.amount') }}">Repurt Amount</a></li>
                                     <li><a href="form-advanced.html">Form Advanced</a></li>
                                     <li><a href="form-validation.html">Form Validation</a></li>
                                     <li><a href="form-pickers.html">Form Pickers</a></li>
