@@ -116,6 +116,8 @@ Route::middleware('admin')->group(function () {
 //__ Report all Expenses__//
 Route::middleware('admin')->group(function () {
     Route::get('/report/amount', [RepotrController::class, 'report_amount'])->name('report.amount');
+    Route::get('/expensess/delete/{d}', [RepotrController::class, 'expensess_delete'])->name('expensess.delete');
+    Route::get('/income/delete/{d}', [RepotrController::class, 'income_delete'])->name('income.delete');
 });
 
 

@@ -15,7 +15,6 @@
                     <th>Date</th>
                     <th>Amount</th>
                     <th>Name</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,9 +27,6 @@
                             <td>{{ $expenses_liste->created_at->format('m-d-Y') }}</td>
                             <td>{{ $expenses_liste->amount }}</td>
                             <td>{{ $expenses_liste->name }}</td>
-                            <td>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -40,9 +36,9 @@
             </div>
            <tr>
             <td>
-                <div class="d-flex justify-content-between pe-5">
+                <div class="d-flex">
                     <h4 class="header-title">Total amount:</h4>
-                    <h4 class="header-title">&#2547; {{ $total_amount }}</h4>
+                    <h4 class="header-title">&nbsp; &#2547; {{ $total_amount }}</h4>
                 </div>
             </td>
            </tr>
@@ -66,34 +62,46 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $serial = ($expenses_listes->currentPage() - 1) * $expenses_listes->perPage() + 1;
-                    @endphp
-                    @foreach ( $expenses_listes as $sl=>$expenses_liste )
+                    {{-- @php
+                        $serial_no = ($income_listes->currentPage() - 1) * $income_listes->perPage() + 1;
+                    @endphp --}}
+                    @foreach ( $income_listes as $sl=>$income_liste )
                         <tr>
                             <td>{{ $serial++ }}</td>
-                            <td>{{ $expenses_liste->created_at->format('m-d-Y') }}</td>
-                            <td>{{ $expenses_liste->amount }}</td>
-                            <td>{{ $expenses_liste->name }}</td>
+                            <td>{{ $income_liste->created_at->format('m-d-Y') }}</td>
+                            <td>{{ $income_liste->amount }}</td>
+                            <td>{{ $income_liste->rel_to_user->name }}</td>
                             <td>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-primary btn-sm">Download student invoice</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="d-flex justify-content-end">
-                {{ $expenses_listes->links('admin.layouts.pagination') }}
+                {{ $income_listes->links('admin.layouts.dable') }}
             </div>
            <tr>
             <td>
-                <div class="d-flex justify-content-between pe-5">
-                    <h4 class="header-title">Total amount:</h4>
-                    <h4 class="header-title">{{ $total_amount }}</h4>
+                <div class="d-flex">
+                    <h4 class="header-title">Total income: </h4>
+                    <h4 class="header-title">&nbsp; &#2547; {{ $total_inco }}</h4>
                 </div>
             </td>
            </tr>
         </div>
     </div>
 </div>
+@endsection
+@section('footer_script')
+    <script>
+        @if(Session::has('delete'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                toastr.error("{{ session('delete') }}");
+        @endif
+    </script>
 @endsection
