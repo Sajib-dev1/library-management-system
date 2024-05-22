@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,36 +48,33 @@
                     </a>
                 </h2>
 
-                <form class="" action="{{ route('admin.logged') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('student.register.form.store') }}" method="POST">
                     @csrf
-                    <div class="form-group m-b-20 row">
+
+                    <div class="form-group row m-b-20">
                         <div class="col-12">
-                            <label for="">Email address</label>
-                            <input class="form-control" name="email" type="email" id="admin-email" required="" placeholder="Enter your email">
-                            @error('email')
-                                <strong class="text-danger">{{ $message }}</strong>
-                            @enderror
-                            @if (session('wrong'))
-                                <strong class="text-danger">{{ session('wrong') }}</strong>
-                            @endif
+                            <label for="username">Full Name</label>
+                            <input class="form-control" type="text" id="username" name="name" placeholder="Michael Zenaty">
                         </div>
                     </div>
 
                     <div class="form-group row m-b-20">
                         <div class="col-12">
-                            <label for="data-pass">Password</label>
-                            <input class="form-control" type="password" name="password" required="" id="admin_passeord_sin" placeholder="Enter your password">
-                            @error('password')
-                                <strong class="text-danger">{{ $message }}</strong>
-                            @enderror
-                            @if (session('pass_wrong'))
-                                <strong class="text-danger">{{ session('pass_wrong') }}</strong>
-                            @endif
+                            <label for="emailaddress">Email address</label>
+                            <input class="form-control" type="email" name="email" id="emailaddress" placeholder="john@deo.com">
                         </div>
                     </div>
+
+                    <div class="form-group row m-b-20">
+                        <div class="col-12">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" name="password" id="password" placeholder="Enter your password">
+                        </div>
+                    </div>
+
                     <div class="form-group row text-center m-t-10">
                         <div class="col-12">
-                            <button class="btn btn-block btn-custom waves-effect waves-light" type="submit">Sign In</button>
+                            <button class="btn btn-block btn-custom waves-effect waves-light" type="submit">Sign Up Free</button>
                         </div>
                     </div>
 
@@ -84,7 +82,7 @@
 
                 <div class="row m-t-50">
                     <div class="col-sm-12 text-center">
-                       <button type="button" data-email="admin@gmail.com" data-pass="Pa$$w0rd!" class="btn btn-success admin_pass">Addmin Password</button>
+                        <p class="text-muted">Already have an account?  <a href="{{ route('student.login') }}" class="text-dark m-l-5"><b>Sign In</b></a></p>
                     </div>
                 </div>
 
@@ -105,16 +103,21 @@
         <!-- App js -->
         <script src="{{ asset('backend') }}/js/jquery.core.js"></script>
         <script src="{{ asset('backend') }}/js/jquery.app.js"></script>
-        <script>
-            $('.admin_pass').click(function(){
-                let admin_email = $(this).attr('data-email');
-                $('#admin-email').attr('value',admin_email);
-            });
 
-            $('.admin_pass').click(function(){
-                let admin_password = $(this).attr('data-pass');
-                $('#admin_passeord_sin').attr('value',admin_password);
+        <script>
+            $('.shift_check_abount').click(function(){
+                let amount = $(this).attr('data-amount');
+                $('.amount').val(amount);
+
+                // alert(amount);
+            })
+            $('.shift_check_amount').click(function(){
+                let amount = $(this).attr('total-amount');
+                $('.amount').val(amount);
+
+                // alert(amount);
             })
         </script>
+
     </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignSeat;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\StudentEducation;
@@ -21,11 +22,17 @@ class StudentController extends Controller
         $student_education = StudentEducation::where('student_id',Auth::id())->get();
         $students = User::where('id','!=',Auth::id())->paginate(7);
         $student_messages = Studentmessage::where('student_id',Auth::id())->where('replay_id',null)->where('status',1)->get();
+        $amount = AsignSeat::where('student_id',Auth::user()->id)->first();
+
+        $discount = $amount->discount;
+
         return view('student.profile.student_profile',[
             'sociles'=>$sociles,
             'student_education'=>$student_education,
             'students'=>$students,
             'student_messages'=>$student_messages,
+            'amount'=>$amount,
+            'discount'=>$discount,
         ]);
     }
 

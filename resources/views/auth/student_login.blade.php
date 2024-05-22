@@ -41,39 +41,52 @@
         <div class="account-box">
         
             <div class="card-box p-5">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
                 <h2 class="text-uppercase text-center pb-4">
                     <a href="index.html" class="text-success">
-                        <span><img src="assets/images/logo.png" alt="" height="26"></span>
+                        <span><img src="{{ asset('backend') }}/images/logo.png" alt="" height="26"></span>
                     </a>
                 </h2>
 
-                <form class="" action="{{ route('admin.logged') }}" method="POST">
+                <form action="{{ route('student.store.libery') }}" method="POST">
                     @csrf
                     <div class="form-group m-b-20 row">
                         <div class="col-12">
-                            <label for="">Email address</label>
-                            <input class="form-control" name="email" type="email" id="admin-email" required="" placeholder="Enter your email">
-                            @error('email')
-                                <strong class="text-danger">{{ $message }}</strong>
-                            @enderror
-                            @if (session('wrong'))
-                                <strong class="text-danger">{{ session('wrong') }}</strong>
-                            @endif
+                            <label for="seckret_key">Seckret Kye</label>
+                            <input class="form-control" type="text" name="seckret_key" id="seckret_key" placeholder="Enter your key">
+                        </div>
+                    </div>
+
+                    <div class="form-group m-b-20 row">
+                        <div class="col-12">
+                            <label for="student_email">Email address</label>
+                            <input class="form-control" type="email" name="email" id="student_email" placeholder="Enter your email">
                         </div>
                     </div>
 
                     <div class="form-group row m-b-20">
                         <div class="col-12">
-                            <label for="data-pass">Password</label>
-                            <input class="form-control" type="password" name="password" required="" id="admin_passeord_sin" placeholder="Enter your password">
-                            @error('password')
-                                <strong class="text-danger">{{ $message }}</strong>
-                            @enderror
-                            @if (session('pass_wrong'))
-                                <strong class="text-danger">{{ session('pass_wrong') }}</strong>
-                            @endif
+                            <a href="page-recoverpw.html" class="text-muted pull-right"><small>Forgot your password?</small></a>
+                            <label for="student_pass">Password</label>
+                            <input class="form-control" type="password" name="password" id="student_pass" placeholder="Enter your password">
                         </div>
                     </div>
+
+                    <div class="form-group row m-b-20">
+                        <div class="col-12">
+
+                            <div class="checkbox checkbox-custom">
+                                <input id="remember" type="checkbox" checked="">
+                                <label for="remember">
+                                    Remember me
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="form-group row text-center m-t-10">
                         <div class="col-12">
                             <button class="btn btn-block btn-custom waves-effect waves-light" type="submit">Sign In</button>
@@ -84,8 +97,12 @@
 
                 <div class="row m-t-50">
                     <div class="col-sm-12 text-center">
-                       <button type="button" data-email="admin@gmail.com" data-pass="Pa$$w0rd!" class="btn btn-success admin_pass">Addmin Password</button>
+                        <p class="text-muted">Already have an account?  <a href="{{ route('student.register') }}" class="text-dark m-l-5"><b>Sign Up</b></a></p>
                     </div>
+                </div>
+
+                <div class="row m-t-50">
+                    <button type="button" data-seckret="999551214" data-email="wacaxaduga@mailinator.com" data-pass="Pa$$w0rd!" class="btn btn-success student-pass">Student Password</button>
                 </div>
 
             </div>
@@ -105,16 +122,22 @@
         <!-- App js -->
         <script src="{{ asset('backend') }}/js/jquery.core.js"></script>
         <script src="{{ asset('backend') }}/js/jquery.app.js"></script>
-        <script>
-            $('.admin_pass').click(function(){
-                let admin_email = $(this).attr('data-email');
-                $('#admin-email').attr('value',admin_email);
-            });
 
-            $('.admin_pass').click(function(){
-                let admin_password = $(this).attr('data-pass');
-                $('#admin_passeord_sin').attr('value',admin_password);
+        <script>
+            $('.student-pass').click(function(){
+                let seckret_key = $(this).attr('data-seckret');
+                $('#seckret_key').attr('value',seckret_key);
+            })
+
+            $('.student-pass').click(function(){
+                let student_email = $(this).attr('data-email');
+                $('#student_email').attr('value',student_email);
+            })
+            $('.student-pass').click(function(){
+                let student_pass = $(this).attr('data-pass');
+                $('#student_pass').attr('value',student_pass);
             })
         </script>
+
     </body>
 </html>

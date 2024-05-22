@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AssinShiftController;
+use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\LiberyMasterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepotrController;
 use App\Http\Controllers\SeatLocationController;
+use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\WritterController;
 use App\Http\Controllers\WritterProfileController;
@@ -104,6 +107,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/morning/shift/student', [AssinShiftController::class, 'morning_shift_student'])->name('morning.shift.student');
     Route::post('/getassinstatus', [SeatLocationController::class, 'getassinstatus']);
     Route::get('/attendase/student/status', [SeatLocationController::class, 'attendase_student_status'])->name('attendase.student.status');
+    Route::get('/morning/shift/attendace', [SeatLocationController::class, 'morning_shift_attendace'])->name('morning.shift.attendace');
+    Route::get('/after/noon/shift/attendace', [SeatLocationController::class, 'after_noon_shift_attendace'])->name('after.noon.shift.attendace');
+    Route::get('/full/attendace/shift', [SeatLocationController::class, 'full_attendace_shift'])->name('full.attendace.shift');
 });
 
 //__ Admin all Expenses__//
@@ -120,6 +126,29 @@ Route::middleware('admin')->group(function () {
     Route::get('/income/delete/{d}', [RepotrController::class, 'income_delete'])->name('income.delete');
 });
 
+Route::get('/admin/login', [AuthLoginController::class, 'admin_login'])->name('admin.login');
+Route::get('/student/login', [AuthLoginController::class, 'student_login'])->name('student.login');
+Route::post('/student/store/libery', [AuthLoginController::class, 'student_store_libery'])->name('student.store.libery');
+Route::get('/student/register', [AuthLoginController::class, 'student_register'])->name('student.register');
+Route::post('/student/register/form/store', [AuthLoginController::class, 'student_register_form_store'])->name('student.register.form.store');
+
+
+// SSLCOMMERZ Start
+Route::get('/sslpay', [SslCommerzPaymentController::class, 'index'])->name('sslpay');
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
+//stripe
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe')->name('stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
 
 

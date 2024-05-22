@@ -115,4 +115,27 @@ class SeatLocationController extends Controller
         }
     }
 
+    //============= Attendace =================
+
+    function morning_shift_attendace(){
+        $morning_shifts = AsignSeat::where('shift_id',1)->get();
+        return view('admin.seat_location.morning_shift_attendace',[
+            'morning_shifts'=>$morning_shifts,
+        ]);
+    }
+
+    function after_noon_shift_attendace(){
+        $after_shifts = AsignSeat::where('shift_id',2)->get();
+        return view('admin.seat_location.after_noon_shift_attendace',[
+            'after_shifts'=>$after_shifts,
+        ]);
+    }
+
+    function full_attendace_shift(){
+        $full_shifts = AsignSeat::where('shift_id',3)->get();
+        return view('admin.seat_location.full_attendace_shift',[
+            'full_shifts'=>$full_shifts,
+        ]);
+    }
+
 }

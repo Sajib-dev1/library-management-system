@@ -135,9 +135,9 @@
             <div class="col-sm-4">
                 <div class="card-box tilebox-one">
                     <i class="icon-paypal float-right text-muted"></i>
-                    <h6 class="text-muted text-uppercase mt-0">Revenue</h6>
-                    <h2 class="m-b-20">$<span data-plugin="counterup">46,782</span></h2>
-                    <span class="badge badge-danger"> -29% </span> <span class="text-muted">From previous period</span>
+                    <h6 class="text-muted text-uppercase mt-0">Total amount</h6>
+                    <h2 class="m-b-20">&#2547;<span data-plugin="counterup"> {{ $amount->amount }}</span></h2>
+                    <span class="badge badge-danger"> {{ $discount }} </span> <span class="text-muted">From discount</span>
                 </div>
             </div><!-- end col -->
 

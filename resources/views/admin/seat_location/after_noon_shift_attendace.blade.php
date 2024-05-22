@@ -21,6 +21,33 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <table class="table table-borderd">
+                        <tr>
+                            <th>SL</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Shift Start Time</th>
+                            <th>Shift End Time</th>
+                            <th>Atendace</th>
+                        </tr>
+                        @foreach ( $after_shifts as $sl=>$after_shift )
+                            <tr>
+                                <td>{{ $sl+1 }}</td>
+                                <td>{{ $after_shift->rel_to_user->name }}</td>
+                                <td>{{ $after_shift->rel_to_user->email }}</td>
+                                <td>{{ $after_shift->start_date }}</td>
+                                <td>{{ $after_shift->end_date }}</td>
+                                <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" {{ $after_shift->status == 1?'checked':'' }} {{ $after_shift->status == 1?'checked':'' }} data-toggle="toggle" data-id="{{ $after_shift->id }}" student_id="{{ $after_shift->rel_to_user->id }}" class="status" value="{{ $after_shift->status }}">
+                                    </label>                                      
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+                <div class="p-2">
+                    <a href="{{ route('attendase.student.status') }}" class="btn btn-success">Submit Data</a>
                 </div>
             </div>
         </div>
